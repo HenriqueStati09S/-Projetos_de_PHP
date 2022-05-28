@@ -1,50 +1,47 @@
 <?php
+session_start();
+?>
 
-$categorias = [];
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de inscrição</title>
+</head>
+<body>
 
-$categorias[] = 'infantil';
-$categorias[] = 'adolescente';
-$categorias[] = 'adulto';
+    <p> Formulário de inscrição </p>
+    
+    <form action="script.php" method="post">
+    
+    <p>Seu nome: <input type="text" name="nome"> </p>
+    <p>Seu idade: <input type="text" name="idade"> </p>
+    <p><input type="submit" value="Enviar dados do competidor"></p>
 
-$nome = 'Henrique';
-$idade = 28;
+    <?php
+  
 
-
-
-if($idade >= 6 && $idade <= 12){
-
-    for($i = 0; $i <= count($categorias); $i++){
-
-        if($categorias[$i] = 'infantil') 
-            echo "O nadador ".$nome. " vai competir na categoria: ".$categorias[$i].".";
-        break;
-
-        }
-
-}
-
-else if($idade >= 12 && $idade <= 18){
-
-    for($i=0; $i<=count($categorias); $i++){
-
-        if($categorias[$i] = 'adolescente') 
-            echo 'O nadador '.$nome. " vai competir na categoria: ".$categorias[$i].'.';
-            break;
-           
-        }
-
-}
-
-else{
-
-    for($i=0; $i<=count($categorias); $i++){
-
-        if($categorias[$i] = 'adulto') 
-            echo 'O nadador '.$nome. " vai competir na categoria: ".$categorias[$i].'.';
-        
-            break;
-            
-        }
+    ///
+    $mensagemDeErro = isset($_SESSION['mensagem de erro']) ? $_SESSION['mensagem de erro'] : '';
+    if(!empty($mensagemDeErro)){
+        echo $mensagemDeErro;
+    }  
+    if(true){
+    $mensagemDeSucesso = isset($_SESSION['mensagem de sucesso']) ? $_SESSION['mensagem de sucesso'] : '';
+    
+    if(!empty($mensagemDeSucesso)){
+        echo $mensagemDeSucesso;
+        } 
+    } 
 
 
-}
+
+
+    ?>
+
+    </form>
+
+</body>
+</html>
